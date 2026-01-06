@@ -35,6 +35,17 @@ jobs:
         run: pipenv --python 3.13 && pipenv install --deploy
       - name: Update
         run: pipenv run dev
+      - name: Debug file tree
+        run: |
+          echo "=== current dir ==="
+          pwd
+          echo "=== root files ==="
+          ls -lah
+          echo "=== output dir ==="
+          ls -lah output || echo "output dir not found"
+          echo "=== find user_result ==="
+          find . -name "user_result.txt" || true
+
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
