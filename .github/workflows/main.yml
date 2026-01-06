@@ -34,7 +34,7 @@ jobs:
       - name: Install dependecies
         run: pipenv --python 3.13 && pipenv install --deploy
       - name: Update
-        run: pipenv run dev
+        run: pipenv run python main.py --no-check
       - name: Debug file tree
         run: |
           echo "=== current dir ==="
